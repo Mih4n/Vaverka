@@ -11,7 +11,7 @@
             </header>
             <div class="items-cards">
                 <CartItem 
-                    v-for="product in products"
+                    v-for="product in validProducts"
                     :key="`cart-item-${product.product.name}`"
                     :item="product"
                 />
@@ -28,8 +28,7 @@ import { watch } from 'vue';
 import Icon from '../../base/Icon.vue';
 import CartItem from './CartItem.vue';
 
-const { open } = storeToRefs(useCartStore())
-const { products } = useCartStore()
+const { open, validProducts } = storeToRefs(useCartStore())
 
 watch(open, (value) => {
     const body = document.querySelector('body')
@@ -77,6 +76,7 @@ watch(open, (value) => {
 
         transition: inherit;
 
+        gap: 20px;
         border-radius: 20px 0 0 20px;
         
         header {
@@ -92,6 +92,12 @@ watch(open, (value) => {
                 align-items: center;
                 justify-content: center;
             }
+        }
+
+        .items-cards {
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
         }
     }
 }

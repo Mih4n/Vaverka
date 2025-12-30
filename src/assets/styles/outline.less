@@ -5,10 +5,10 @@
     transition:
         border-color 0.25s ease,
         box-shadow 0.25s ease;
-    
-    &:hover,
-    &:focus-within,
-    &.outlined {
+
+    &:hover:not(.no-focus),
+    &:focus-within:not(.no-focus),
+    &.outlined:not(.no-focus) {
         border-color: var(--primary);
         box-shadow: 0 0 0 2px var(--primary);
     }

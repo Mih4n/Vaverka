@@ -39,8 +39,12 @@ const clamp = (value: number) => {
 
 watch(
     model,
-    (value) => {
-        inputValue.value = value === undefined ? '' : String(value)
+    (newValue) => {
+        if (newValue !== undefined && String(newValue) === inputValue.value) {
+            return
+        }
+        
+        inputValue.value = newValue === undefined ? '' : String(newValue)
     },
     { immediate: true }
 )
@@ -71,8 +75,6 @@ function onBlur() {
     inputValue.value = String(clamped)
 }
 </script>
-
-
 
 <style scoped lang="less">
 .number {

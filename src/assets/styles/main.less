@@ -85,6 +85,8 @@ main {
     align-items: center;
     justify-content: center;
 
+    transition: background-color 0.3s ease;
+
     &.m {
         height: 40px;
     }
@@ -100,7 +102,15 @@ main {
         background-color: var(--primary);
     }
 
-    :disabled {
+    &:disabled {
         background-color: var(--light-gray);
     }
+
+    &.success {
+        background-color: var(--success);
+    }
+}
+
+.pointer {
+    cursor: pointer;
 }

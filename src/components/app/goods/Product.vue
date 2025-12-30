@@ -25,10 +25,10 @@
                     {{ product.price }}
                 </h4>
             </div>
-            <button class="button primary m p10">
+            <button class="button primary m p10" :class="{ 'success': isAdded }" @click="() => handleAddToCart(product)">
                 <Icon name="shoppingCart" /> 
                 <h4>
-                    В корзину
+                    {{ isAdded ? 'Добавлено!' : 'В корзину' }}
                 </h4>
             </button>
         </div>
@@ -39,10 +39,24 @@
 import Icon from '../../base/Icon.vue';
 import { Product } from '../../../models/Product';
 import { AttributeType } from '../../../models/AttributeType';
+import { useCartStore } from '../../../stores/CartStore';
+import { ref } from 'vue';
+
+const { addToCart } = useCartStore()
 
 const props = defineProps<{
     product: Product
 }>()
+
+const isAdded = ref(false)
+const handleAddToCart = (product: Product) => {
+    addToCart(product)
+    isAdded.value = true
+    
+    setTimeout(() => {
+        isAdded.value = false
+    }, 2000)
+}
 
 const attributeTypeToName = (type: AttributeType) => {
     const map = new Map([
@@ -67,6 +81,7 @@ const attributeTypeToName = (type: AttributeType) => {
 
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: center;
 
         .attributes {
             display: inline-grid;

@@ -1,0 +1,106 @@
+@import url(./base.less);
+@import url(./prime.less);
+@import url(./inputs.less);
+@import url(./outline.less);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.icon {
+    &.white {
+        color: #ffffff;
+    }
+    &.gray {
+        color: var(--gray);
+    }   
+    &.light-gray {
+        color: var(--light-gray);
+    }
+    &.primary {
+        color: var(--primary);
+    }
+}
+
+div{
+    &.primary {
+        background-color: var(--primary);
+    }
+    &.discount {
+        background-color: var(--discount);
+    }
+    &.light-gray {
+        background-color: var(--light-gray);
+    }
+}
+
+body {
+    background-color: #f0f4fa;
+}
+
+main {
+    max-height: calc(100dvh - var(--header-height));
+    overflow-y: scroll;
+
+    &.stack {
+        overflow: hidden;
+    }
+}
+
+.shadow {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card {
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    padding: 15px;
+    box-sizing: border-box;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: #ffffff;
+    transition: box-shadow 0.3s ease;
+
+
+    .inputs {
+        gap: 10px;
+        display: flex;
+        margin-top: 15px;
+        width: 100%;
+
+        .input {
+            flex: 1;
+        }
+    }
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.m {
+        height: 40px;
+    }
+
+    &.p10 {
+        gap: 5px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    &.primary {
+        color: white;
+        background-color: var(--primary);
+    }
+
+    :disabled {
+        background-color: var(--light-gray);
+    }
+}

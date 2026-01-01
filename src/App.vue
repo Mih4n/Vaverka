@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Header from './components/base/Header.vue';
-import Carousel from './components/base/Carousel.vue';
 import CategoriesCards from './components/app/CategoriesCards.vue';
 import CategoriesSelect from './components/app/CategoriesSelect.vue';
 import { useCategoriesStore } from './stores/categoriesStore';

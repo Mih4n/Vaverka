@@ -64,14 +64,13 @@
         gdk-pixbuf
         glib
         dbus
-        openssl_3
         librsvg
       ];
     in {
       devShell = pkgs.mkShell {
         buildInputs = packages ++ libraries;
 
-        LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH";
+        # LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath libraries}:$LD_LIBRARY_PATH";
         XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS";
         ANDROID_HOME = "${android_sdk}/libexec/android-sdk";
         NDK_HOME = "${android_sdk}/libexec/android-sdk/ndk/26.3.11579264";

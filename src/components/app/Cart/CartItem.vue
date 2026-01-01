@@ -20,7 +20,7 @@
 import InputNumber from '../../base/InputNumber.vue';
 import { CartItem } from '../../../models/CartItem';
 
-const props = defineProps<{
+defineProps<{
     item: CartItem
 }>()
 </script>

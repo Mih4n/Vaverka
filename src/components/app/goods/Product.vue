@@ -44,7 +44,7 @@ import { ref } from 'vue';
 
 const { addToCart } = useCartStore()
 
-const props = defineProps<{
+defineProps<{
     product: Product
 }>()
 

@@ -37,7 +37,6 @@
 import { onMounted, ref } from 'vue'
 import Icon from './Icon.vue';
 
-let interval: number
 const props = defineProps<{
     items: T[];
     autoplay?: boolean
@@ -62,7 +61,7 @@ function goTo(index: number) {
 }
 
 onMounted(() => {
-    interval = setInterval(next, 3000)
+    setInterval(next, 3000)
 })
 </script>
 

@@ -3,7 +3,7 @@
         <div class="card content">
             <header>
                 <div class="icon">
-                    <Icon name="cross" />
+                    <Icon name="shoppingCart" />
                     <h3>Корзина</h3>
                 </div>
 
@@ -43,6 +43,10 @@ watch(open, (value) => {
 .cart {
     transition: all 0.3s ease;
 
+    .icon .u-icon {
+        height: 24px;
+    }
+
     .u-icon {
         height: 16px;
         aspect-ratio: 1;
@@ -66,9 +70,10 @@ watch(open, (value) => {
 
     .content {
         top: 0;
-        right: -40%;
+        right: 0;
         padding: 20px;
         position: absolute;
+        transform: translateX(100%);
 
         width: 40%;
         height: 100dvh;
@@ -109,7 +114,18 @@ watch(open, (value) => {
     }
 
     .content {
-        right: 0;
+        transform: translateX(0);
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .cart .content {
+        width: 100%;
+    } 
+
+    .cart.open .content {
+        border-radius: 0;
     }
 }
 </style>

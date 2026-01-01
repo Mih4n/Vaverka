@@ -21,6 +21,7 @@ const updateHeaderWidth = () => {
 };
 
 watch(header, () => updateHeaderWidth())
+window.addEventListener('resize', () => updateHeaderWidth())
 </script>
 
 <template>
@@ -112,10 +113,18 @@ header {
     .search.desktop {
         display: none;
     }    
+
+    header {
+        .wrapper {
+            .user-info {
+                flex: 0;
+            }
+        }
+    }
 }
 @media (min-width: 1200px) {
     .search.mobile {
         display: none;
-    }    
+    }  
 }
 </style>

@@ -12,6 +12,7 @@ import { useGoodsStore } from './stores/goodsStore';
 import Goods from './components/app/goods/Goods.vue';
 import { AttributeType } from './models/AttributeType';
 import Cart from './components/app/Cart/Cart.vue';
+import MainCarousel from './components/app/MainCarousel.vue';
 
 useGoodsStore().setGoods([
     { name: 'Вышыванка класічная', categoriesIds: [ 1, 3 ], imageUrl: 'https://images.pexels.com/photos/6311387/pexels-photo-6311387.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', sizes: [ 44, 46, 48, 50 ], score: 5, scored: 12, price: 120, materials: [ 'Лён', 'Хлопок' ] },
@@ -37,13 +38,7 @@ useCategoriesStore().setCategories([
 <template>
     <Header />
     <main>
-        <Carousel :items="[1, 2, 3]">
-            <template #item="{ item }">
-                <div class="slide">
-                    <h3>Item {{ item }}</h3>
-                </div>
-            </template>
-        </Carousel>
+        <MainCarousel />
         <CategoriesCards />
         <div class="goods">
             <div class="filters">

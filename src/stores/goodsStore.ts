@@ -17,10 +17,11 @@ export const useGoodsStore = defineStore('goods', () => {
         if (goods.value.length === 0) {
             return { min: 0, max: 0 }
         }
+        const prices = goods.value.map(g => g.price)
 
         return {
-            min: 0,
-            max: Math.max(...goods.value.map(g => g.price))
+            min: Math.min(...prices),
+            max: Math.max(...prices)
         }
     })
     const priceFromTo = ref(priceRange.value)

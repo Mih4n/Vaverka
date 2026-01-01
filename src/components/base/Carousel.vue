@@ -34,13 +34,14 @@
 </template>
 
 <script setup lang="ts" generic="T">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import Icon from './Icon.vue';
 
+let interval: number
 const props = defineProps<{
     items: T[];
+    autoplay?: boolean
 }>()
-
 const currentIndex = ref(0)
 
 function next() {
@@ -59,6 +60,10 @@ function prev() {
 function goTo(index: number) {
     currentIndex.value = index
 }
+
+onMounted(() => {
+    interval = setInterval(next, 3000)
+})
 </script>
 
 <style lang="less">
@@ -71,16 +76,19 @@ function goTo(index: number) {
     position: relative;
     background-color: var(--primary);
 
+    display: flex;
+    flex-direction: column;
+
     .track {
-        display: flex;
+        flex: 1;
         width: 100%;
-        height: 100%;
+        display: flex;
+        min-height: 100%;
         transition: transform 0.4s ease;
     }
 
     .item {
-        min-width: 100%;
-        height: 100%;
+        flex: 0 0 100%
     }
 
     .controls {
@@ -94,7 +102,7 @@ function goTo(index: number) {
         button {
             padding: 8px;
             pointer-events: all;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.4);
             border: none;
             color: #fff;
             width: 40px;

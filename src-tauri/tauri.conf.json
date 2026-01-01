@@ -24,7 +24,8 @@
   },
   "bundle": {
     "android": {
-      "versionCode": 100
+      "versionCode": 100,
+      "minSdkVersion": 24
     },
     "active": true,
     "targets": "all",

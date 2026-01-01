@@ -1,5 +1,5 @@
 <template>
-    <Carousel :items="items">
+    <Carousel autoplay :items="items">
         <template #item="{ item }">
             <div class="slide">
                 <h2 class="white">{{ item.title }}</h2>
@@ -40,7 +40,7 @@ const items = [
     flex-direction: column;
 
     button {
-        width: 300px;
+        width: min(100%, 300px);
         margin-top: auto;
     }
 }

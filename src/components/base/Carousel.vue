@@ -34,34 +34,52 @@
 </template>
 
 <script setup lang="ts" generic="T">
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import Icon from './Icon.vue';
 
 const props = defineProps<{
     items: T[];
-    autoplay?: boolean
+    autoplay?: boolean 
 }>()
+
 const currentIndex = ref(0)
+let timer: number | null = null
+
+function startAutoplay() {
+    stopAutoplay() 
+    if (props.autoplay !== false) {
+        timer = window.setInterval(next, 3000)
+    }
+}
+
+function stopAutoplay() {
+    if (timer) {
+        clearInterval(timer)
+        timer = null
+    }
+}
 
 function next() {
-    console.log(props.items)
-    console.log(currentIndex.value);
     currentIndex.value = (currentIndex.value + 1) % props.items.length
-    console.log(currentIndex.value);
+    startAutoplay()
 }
 
 function prev() {
-    console.log(currentIndex.value);
     currentIndex.value = (currentIndex.value - 1 + props.items.length) % props.items.length
-    console.log(currentIndex.value);
+    startAutoplay()
 }
 
 function goTo(index: number) {
     currentIndex.value = index
+    startAutoplay() 
 }
 
 onMounted(() => {
-    setInterval(next, 3000)
+    startAutoplay()
+})
+
+onUnmounted(() => {
+    stopAutoplay()
 })
 </script>
 
